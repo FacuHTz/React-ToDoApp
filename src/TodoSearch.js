@@ -1,7 +1,7 @@
 import React from "react";
 import "./TodoSearch.css";
 
-function TodoSearch(searchValue, setSearchValue) {
+function TodoSearch({searchValue, setSearchValue}) {
 
   // const [searchValue, setSearchValue] = React.useState("");
 
@@ -12,8 +12,8 @@ function TodoSearch(searchValue, setSearchValue) {
 
   return (
   <input onChange={onSearchValueChange}
-    // value={searchValue}
-    className="TodoSearch" 
+    value={searchValue}
+    className="TodoSearch"
     placeholder="find tasks" />
     );
 }
