@@ -10,8 +10,9 @@ import { CreateTodoButton } from "./CreateTodoButton";
 
 const defaultTodos = [
   { text: "Cortar cebolla", completed: true },
-  { text: "Tomar AwA", completed: false },
+  { text: "Tomar agua", completed: false },
   { text: "Ganar un mundial", completed: false },
+  { text: "Ganar una copa america", completed: true },
 ];
 
 function App() {
@@ -32,6 +33,11 @@ function App() {
     });
 
   }
+
+  const completeTodos = (text) => {
+    const todoIndex = todos.findIndex(todo => todo.text == text);
+    todos[todoIndex].completed = true;
+  };
 
   return (
     <React.Fragment>
