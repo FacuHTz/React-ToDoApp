@@ -1,5 +1,4 @@
-// import './App.css';
-import React from "react";
+import React, { useState } from "react";
 import { TodoCounter } from "./TodoCounter";
 import { TodoSearch } from "./TodoSearch";
 import { TodoList } from "./TodoList";
@@ -8,22 +7,52 @@ import { CreateTodoButton } from "./CreateTodoButton";
 
 
 
-const todos = [
+const defaultTodos = [
   { text: "Cortar cebolla", completed: true },
-  { text: "Tomar AwA", completed: false },
+  { text: "Tomar agua", completed: false },
   { text: "Ganar un mundial", completed: false },
+  { text: "Ganar una copa america", completed: true },
 ];
 
 function App() {
+  const[todos, setTodos] = React.useState(defaultTodos);
+  const [searchValue, setSearchValue] = React.useState("");
+  const completedTodos = todos.filter(todos => !!todos.completed).length;
+  const totalTodos = todos.length;
+
+  let searchedTodos = [];
+
+  if (!searchValue.length >= 1){
+    searchedTodos = todos
+  } else{
+    searchedTodos = todos.filter(todo =>{
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText);
+    });
+
+  }
+
+  const completeTodos = (text) => {
+    const todoIndex = todos.findIndex(todo => todo.text == text);
+    todos[todoIndex].completed = true;
+  };
+
   return (
     <React.Fragment>
       
-      <TodoCounter />
+      <TodoCounter 
+      total={totalTodos}
+      completed={completedTodos}
+      />
 
-      <TodoSearch />
+      <TodoSearch 
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      />
 
       <TodoList>
-        {todos.map((todo) => (
+        {searchedTodos.map((todo) => (
           <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
         ))}
       </TodoList>

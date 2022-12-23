@@ -10,7 +10,7 @@ function CreateTodoButton() {
 
   return <button 
   className="CreateTodoButton"
-  onClick={onClickButton}
+  onClick={()=>onClickButton("hola")}
   >+</button>;
 }
 
