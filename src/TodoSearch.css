@@ -1,0 +1,10 @@
+.TodoSearch{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    width: 97.5%;
+    height: 25px;
+    border-radius: 10px;
+    background: linear-gradient(130deg, rgba(255, 0, 255, 0.226) 0%, rgba(248, 248, 248, 0.212));
+    border: 0px solid transparent;
+    box-shadow: 0px 5px 50px rgba(32, 53, 41, 0.35);
+}
