@@ -12,7 +12,7 @@ function Modal ({children}){
     return PortalReactDOM.createPortal(
         <div className="ModalBackground">
       {children}
-      
+      <input type="text"/>
     </div>,
     document.getElementById('modal')
         
